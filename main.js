@@ -24,17 +24,19 @@ $(function(){
         canvas.setWidth(fabricImage.width);
         canvas.setHeight(fabricImage.height);
 
-        canvas.clear()
-        canvas.add(fabricImage);
-
-        var lgtm = new fabric.Text('LGTM', {
+        var lgtm = new fabric.Text('LGTM');
+        lgtm.set({
           fontSize: 64,
           fontFamily: 'Impact',
           stroke: '#000',
           strokeWidth: 2,
-          fill: '#fff'
+          fill: '#fff',
+          left: (fabricImage.width - lgtm.width) / 2,
+          top:  (fabricImage.height - lgtm.height) / 2
         });
 
+        canvas.clear()
+        canvas.add(fabricImage);
         canvas.add(lgtm);
       };
       image.src = e.target.result;
