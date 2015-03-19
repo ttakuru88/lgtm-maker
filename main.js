@@ -10,6 +10,8 @@ $(function(){
   var $file = $('input[type=file]');
   var $fontFamilies = $('#font-families');
   var $fontFamily = $('#font-family');
+  var $bold = $('#bold');
+  var $italic = $('#italic');
 
   $file.on('change', function(e){
     if(!e.target.files[0]) { return; }
@@ -44,7 +46,9 @@ $(function(){
           top:  (fabricImage.height - lgtmText.height) / 2,
           cornerSize: 6,
           cornerColor: '#6699ff',
-          transparentCorners: false
+          transparentCorners: false,
+          fontWeight: ($bold.is(':checked') ? 'bold' : null),
+          fontStyle: ($italic.is(':checked') ? 'italic' : null)
         });
 
         canvas.clear()
@@ -97,6 +101,20 @@ $(function(){
     if(!lgtmText) { return; }
 
     lgtmText.setFontFamily($fontFamily.val());
+    canvas.renderAll();
+  });
+
+  $bold.on('change', function(){
+    if(!lgtmText) { return; }
+
+    lgtmText.setFontWeight($bold.is(':checked') ? 'bold' : null);
+    canvas.renderAll();
+  });
+
+  $italic.on('change', function(){
+    if(!lgtmText) { return; }
+
+    lgtmText.setFontStyle($italic.is(':checked') ? 'italic' : null);
     canvas.renderAll();
   });
 });
