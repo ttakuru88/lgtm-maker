@@ -7,8 +7,11 @@ $(function(){
   var $strokeColor=  $('#stroke-color');
   var $fillColor=  $('#fill-color');
   var lgtmText = null;
+  var $file = $('input[type=file]');
+  var $fontFamilies = $('#font-families');
+  var $fontFamily = $('#font-family');
 
-  $('input[type=file]').on('change', function(e){
+  $file.on('change', function(e){
     if(!e.target.files[0]) { return; }
 
     var imageReader = new FileReader;
@@ -33,7 +36,7 @@ $(function(){
         lgtmText = new fabric.Text($text.val());
         lgtmText.set({
           fontSize: 64,
-          fontFamily: 'Impact',
+          fontFamily: $fontFamily.val(),
           stroke: '#000',
           strokeWidth: 2,
           fill: '#fff',
@@ -79,6 +82,21 @@ $(function(){
     if(!lgtmText) { return; }
 
     lgtmText.setFill($fillColor.val());
+    canvas.renderAll();
+  });
+
+  $fontFamilies.on('change', function(){
+    $fontFamily.val($fontFamilies.val());
+    if(!lgtmText) { return; }
+
+    lgtmText.setFontFamily($fontFamilies.val());
+    canvas.renderAll();
+  });
+
+  $fontFamily.on('change', function(){
+    if(!lgtmText) { return; }
+
+    lgtmText.setFontFamily($fontFamily.val());
     canvas.renderAll();
   });
 });
