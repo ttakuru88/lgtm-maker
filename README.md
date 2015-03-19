@@ -1,1 +1,1 @@
-# lgtm-generator
+# lgtm-maker
