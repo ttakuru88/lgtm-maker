@@ -5,6 +5,8 @@ $(function(){
   var $download = $('#download');
 
   $('input[type=file]').on('change', function(e){
+    if(!e.target.files[0]) { return; }
+
     var imageReader = new FileReader;
 
     imageReader.onload = function(e){
