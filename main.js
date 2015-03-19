@@ -2,6 +2,7 @@ var maxWidth = 400
 
 $(function(){
   var canvas = new fabric.Canvas('canvas');
+  var $download = $('#download');
 
   $('input[type=file]').on('change', function(e){
     var imageReader = new FileReader;
@@ -40,5 +41,12 @@ $(function(){
     };
 
     imageReader.readAsDataURL(e.target.files[0]);
+
+    $download.attr('download', 'LGTM-' + e.target.files[0].name);
+  });
+
+  $download.on('click', function(){
+    canvas.deactivateAll().renderAll()
+    $download.attr('href', canvas.getElement().toDataURL());
   });
 });
