@@ -36,7 +36,10 @@ $(function(){
           strokeWidth: 2,
           fill: '#fff',
           left: (fabricImage.width - lgtmText.width) / 2,
-          top:  (fabricImage.height - lgtmText.height) / 2
+          top:  (fabricImage.height - lgtmText.height) / 2,
+          cornerSize: 6,
+          cornerColor: '#6699ff',
+          transparentCorners: false
         });
 
         canvas.clear()
