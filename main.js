@@ -25,6 +25,16 @@ $(function(){
 
         canvas.clear()
         canvas.add(fabricImage);
+
+        var lgtm = new fabric.Text('LGTM', {
+          fontSize: 64,
+          fontFamily: 'Impact',
+          stroke: '#000',
+          strokeWidth: 2,
+          fill: '#fff'
+        });
+
+        canvas.add(lgtm);
       };
       image.src = e.target.result;
     };
