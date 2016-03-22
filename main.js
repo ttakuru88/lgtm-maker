@@ -1,4 +1,4 @@
-var maxWidth = 400
+var maxWidth = 1000
 
 $(function(){
   var canvas = new fabric.Canvas('canvas');
